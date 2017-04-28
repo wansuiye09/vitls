@@ -29,7 +29,7 @@ function ui_setup(job)
 
     $("<table>" + 
         "<tr>" +
-            "<td><div id='instructionsbutton' class='button'>Instructions</div><div id='instructions'>Annotate every object, even stationary and obstructed objects, for the entire video.</td>" +
+            "<td><div id='instructionsbutton' class='button'>操作指南</div><div id='instructions'>标注视频中的所有物体，包括静止不动或被遮挡的物体。</td>" +
             "<td><div id='topbar'></div></td>" +
         "</tr>" +
         "<tr>" +
@@ -54,21 +54,24 @@ function ui_setup(job)
                           "margin": "0 auto"})
                     .parent().css("width", playerwidth + "px");
 
-    $("#sidebar").css({"height": job.height + "px",
+    $("#sidebar").css({"height": job.height + 30 + "px",
                        "width": "205px"});
 
-    $("#annotatescreen").css("width", (playerwidth + 205) + "px");
+    $("#annotatescreen").css("width", (playerwidth + 300) + "px");
 
     $("#bottombar").append("<div id='playerslider'></div>");
-    $("#bottombar").append("<div class='button' id='rewindbutton'>Rewind</div> ");
-    $("#bottombar").append("<div class='button' id='playbutton'>Play</div> ");
+    $("#playerslider").append("<div id='pshandle' class='ui-slider-handle'></div> ");
+    $("#pshandle").css("width", "40px");
+    $("#pshandle").css("text-align", "center");
+    $("#bottombar").append("<div class='button' id='rewindbutton'>回到开头</div> ");
+    $("#bottombar").append("<div class='button' id='playbutton'>播放</div> ");
 
     $("#topbar").append("<div id='newobjectcontainer'>" +
-        "<div class='button' id='newobjectbutton'>New Object</div></div>");
+        "<div class='button' id='newobjectbutton'>新建标注对象</div></div>");
 
     $("<div id='objectcontainer'></div>").appendTo("#sidebar");
 
-    $("<div class='button' id='openadvancedoptions'>Options</div>")
+    $("<div class='button' id='openadvancedoptions'>选项</div>")
         .button({
             icons: {
                 primary: "ui-icon-wrench"
@@ -83,33 +86,33 @@ function ui_setup(job)
 
     $("#advancedoptions").append(
     "<input type='checkbox' id='annotateoptionsresize'>" +
-    "<label for='annotateoptionsresize'>Disable Resize?</label> " +
+    "<label for='annotateoptionsresize'>禁用尺寸调整</label> " +
     "<input type='checkbox' id='annotateoptionshideboxes'>" +
-    "<label for='annotateoptionshideboxes'>Hide Boxes?</label> " +
+    "<label for='annotateoptionshideboxes'>隐藏标注框</label> " +
     "<input type='checkbox' id='annotateoptionshideboxtext'>" +
-    "<label for='annotateoptionshideboxtext'>Hide Labels?</label> ");
+    "<label for='annotateoptionshideboxtext'>隐藏标签</label> ");
 
     $("#advancedoptions").append(
     "<div id='speedcontrol'>" +
     "<input type='radio' name='speedcontrol' " +
         "value='5,1' id='speedcontrolslower'>" +
-    "<label for='speedcontrolslower'>Slower</label>" +
+    "<label for='speedcontrolslower'>很慢</label>" +
     "<input type='radio' name='speedcontrol' " +
         "value='15,1' id='speedcontrolslow'>" +
-    "<label for='speedcontrolslow'>Slow</label>" +
+    "<label for='speedcontrolslow'>慢</label>" +
     "<input type='radio' name='speedcontrol' " +
         "value='30,1' id='speedcontrolnorm' checked='checked'>" +
-    "<label for='speedcontrolnorm'>Normal</label>" +
+    "<label for='speedcontrolnorm'>正常</label>" +
     "<input type='radio' name='speedcontrol' " +
         "value='90,1' id='speedcontrolfast'>" +
-    "<label for='speedcontrolfast'>Fast</label>" +
+    "<label for='speedcontrolfast'>快</label>" +
     "</div>");
 
-    $("#submitbar").append("<div id='submitbutton' class='button'>Submit HIT</div>");
+    $("#submitbar").append("<div id='submitbutton' class='button'>提交HIT</div>");
 
     if (mturk_isoffline())
     {
-        $("#submitbutton").html("Save Work");
+        $("#submitbutton").html("保存");
     }
 
     return screen;
@@ -161,7 +164,7 @@ function ui_setupbuttons(job, player, tracks)
 
     player.onplay.push(function() {
         $("#playbutton").button("option", {
-            label: "Pause",
+            label: "暂停",
             icons: {
                 primary: "ui-icon-pause"
             }
@@ -170,7 +173,7 @@ function ui_setupbuttons(job, player, tracks)
 
     player.onpause.push(function() {
         $("#playbutton").button("option", {
-            label: "Play",
+            label: "播放",
             icons: {
                 primary: "ui-icon-play"
             }
@@ -333,7 +336,11 @@ function ui_setupslider(player)
         value: player.job.start,
         min: player.job.start,
         max: player.job.stop,
+        create: function() {
+            $("#pshandle").text($(this).slider("value") - player.job.start);
+        },
         slide: function(event, ui) {
+            $("#pshandle").text(ui.value - ui.min);
             player.pause();
             player.seek(ui.value);
             // probably too much bandwidth
@@ -347,13 +354,14 @@ function ui_setupslider(player)
         "background-image": "none"});
 
     slider.css({
-        marginTop: "6px",
-        width: parseInt(slider.parent().css("width")) - 200 + "px", 
+        marginTop: "7px",
+        width: parseInt(slider.parent().css("width")) - 150 + "px", 
         float: "right"
     });
 
     player.onupdate.push(function() {
         slider.slider({value: player.frame});
+        $("#pshandle").text(player.frame - player.job.start);
     });
 }
 

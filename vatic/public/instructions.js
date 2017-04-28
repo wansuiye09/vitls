@@ -1,121 +1,121 @@
 function instructions(job, h)
 {
-    h.append("<h1>Important Instructions</h1>");
-    h.append("<p>In this task, we ask you to annotate a video. You are to draw a box around every object of interest and track each object for the entire video. These instructions will give you tips on how to best use our tool.</p>");
+    h.append("<h1>重要的说明</h1>");
+    h.append("<p>在此次任务中，你需要标注一个视频。你的任务是画一个盒子来包围视频中出现的每一个目标并在整个视频中追踪标注这些目标。这些说明会告诉你使用这个工具的小技巧。</p>");
 
-    h.append("<h2>Crash Course</h2>");
+    h.append("<h2>速成课</h2>");
     var str = "<ul>";
-    str += "<li>Annotate <strong>every object</strong> of interest.</li>";
-    str += "<li>Annotate stationary objects, obstructed objects, and moving objects.</li>";
-    str += "<li>Make your boxes as tight as possible.</li>";
+    str += "<li>标注<strong>每一个</strong>目标。</li>";
+    str += "<li>标注静止目标、被遮挡目标以及移动的目标</li>";
+    str += "<li>让你所画的盒子尽可能的贴紧目标</li>";
     if (job.perobject > 0)
     {
         var amount = Math.floor(job.perobject * 100);
-        str += "<li>We will pay you <strong>" + amount + "&cent; for each object</strong> you annotate.</li>";
+        str += "<li>我们将向您支付<strong>" + amount + "&cent;为您所标注的</strong> 每一个目标</li>";
     }
     if (job.completion > 0)
     {
         var amount = Math.floor(job.completion * 100);
-        str += "<li>We will award you a <strong>bonus of " + amount + "&cent; if you annotate every object</strong>.</li>";
+        str += "<li>我们将奖励您<strong>" + amount + "&cent; 如果你标注了所有目标</strong>.</li>";
     }
     if (job.skip > 0)
     {
-        str += "<li>When the video pauses, adjust your annotations.</li>";
+        str += "<li>当视频暂停时，调整你所标注的内容。</li>";
     }
-    str += "<li>We will hand review your work.</li>";
+    str += "<li>我们会人工检查你的标注。</li>";
     str += "</ul>";
     h.append(str);
 
-    h.append("<h2>Getting Started</h2>");
+    h.append("<h2>入门指南</h2>");
     h.append("<img src='box.jpg' align='right'>");
-    h.append("<p>Click the <strong>New Object</strong> button to start annotating your first object. Position your cursor over the view screen to click on the corner of an object of interest. Use the cross hairs to line up your click. Click on another corner to finish drawing the box. The rectangle should tightly and completely enclose the object you are annotating. Resize the box, if necessary, by dragging the edges of the box.</p>");
+    h.append("<p>点击<strong>新目标</strong>按钮来开始标注你的第一个目标。将屏幕上的光标定位在即将标注的目标的一角，使用十字准线对其你的点击，然后点击另一个角落就画好了一个盒子。矩形应该完全紧密的包围你正在标注的物体。如果有必要的话，可以通过拖动框的边缘来调整盒子。</p>");
 
     h.append("<img src='classify.jpg' align='right'>");
-    h.append("<p>On the right, directly below the New Object button, you will find a colorful box. The box is prompting you to input which type of object you have labeled. Click the correst response.</p>");
+    h.append("<p>在新目标按钮的正下方右侧，你会发现一个彩色的盒子。这个盒子会提示你正在标注的目标的类型，点击恰当的提示内容。</p>");
 
     if (job.skip > 0)
     {
-        h.append("<p>Press the <strong>Play</strong> button. The video will play. When the video automatically pauses, adjust the boxes. Using your mouse, drag-and-drop the box to the correct position and resize if necessary. Continue in this fashion until you have reached the end of the video.</p>");
+        h.append("<p>按下<strong>播放</strong>按钮。视频会播放。当视频自动暂停时，调整盒子。使用你的鼠标，拖放盒子至合适的位置，如有必要可调整盒子的大小. 重复这个过程直到你标记完整个视频。</p>");
     }
     else
     {
-        h.append("<p>Press the <strong>Play</strong> button. The video will begin to play forward. After the object you are tracking has moved a bit, click <strong>Pause</strong>. Using your mouse, drag-and-drop the box to the correct position and resize if necessary. Continue in this fashion until you have reached the end of the video.</p>");
+        h.append("<p>按下<strong>播放</strong>按钮。视频开始向前播放，当你正在追踪标记的目标已经远远移动了，点击<strong>暂停</strong>. 使用你的鼠标，拖放盒子至合适的位置，如有必要可调整盒子的大小. 重复这个过程直到你标记完整个视频。</p>");
     }
 
     if (job.perobject > 0)
     {
-        h.append("<p>Once you have reached the end, you should rewind by pressing the rewind button (next to Play) and repeat this process for every object of interest. You are welcome to annotate multiple objects each playthrough. We will pay you a bonus for every object that you annotate.</p>");
+        h.append("<p>当你播放完整个视频，你应该点击重放按钮（在播放按钮旁）来重新播放视频，重复上述过程来标注视频中的所有目标 。如果你能在每一个影片视频中标注大量的目标是再好不过的，我们会奖励你为所标注的每一个目标。</p>");
     }
     else
     {
-        h.append("<p>Once you have reached the end, you should rewind by pressing the rewind button (next to Play) and repeat this process for every object of interest. You are welcome to annotate multiple objects each playthrough.</p>");
+        h.append("<p>当你播放完整个视频，你应该点击重放按钮（在播放按钮旁）来重新播放视频，重复上述过程来标注视频中的所有目标 。如果你能在每一个影片视频中标注大量的目标是再好不过的，我们会奖励你为所标注的每一个目标。</p>");
     }
 
     h.append("<img src='outsideoccluded.jpg' align='right'>");
-    h.append("<p>If an object leaves the screen, mark the <strong>Outside of view frame</strong> checkbox for the corresponding sidebar rectangle. Make sure you click the right button. When you mouse over the controls, the corresponding rectangle will light up in the view screen. Likewise, if the object you are tracking is still in the view frame but the view is obstructed (e.g., inside a car), mark the <strong>Occluded or obstructed</strong> checkbox. When the object becomes visible again, remember to uncheck these boxes. If there are additional checkboxes describing attributes, mark those boxes for the duration that it applies. For example, only mark \"Walking\" when the person is walking.</p>");
+    h.append("<p>如果一个目标不再出现在该场景， 标记为<strong>在该视图帧之外</strong>  复选框（相应栏的矩形框）。确保你点击了正确的按钮. 当你的鼠标移动至某一控制按钮，相应的矩形框就会在屏幕上变亮。同样的，如过你正在追踪的目标仍然位于该帧，当时被遮挡的情况下，(例如，在车里)标记<strong>阻挡或阻塞</strong>复选框。 当这些目标再次出现，记得去掉之前点击的复选框。 如果有额外的描述属性的复选框，在系统要求的情况下标记这些盒子。比如对于行走中的人只标记“行走中”。</p>");
 
-    h.append("<p>If there are many objects on the screen, it can become difficult to select the right bounding box. By pressing the lock button <img src='lock.jpg'> on an object's sidebar rectangle, you can prevent changes to that track. Press the lock button again to renable modifications.</p>");
+    h.append("<p>如果屏幕上有很多目标，很难选择合适的边界框，通过点击锁定按钮<img src='lock.jpg'> （位于一个目标的边栏框）来防止追踪过程中的变数。再次点击锁定按钮可以取消锁定。</p>");
 
-    h.append("<p>Remembering which box correspond to which box can be confusing. If you click on a box in the view screen, a tooltip will pop that will attempt to remind you of the box's identity.</p>");
+    h.append("<p>盒子和物体之间的对应关系是很容易混淆的，当你在屏幕上点击一个盒子时会有工具提示你盒子的ID。</p>");
     
-    h.append("<p>When you are ready to submit your work, rewind the video and watch it through one more time. Does each rectangle follow the object it is tracking for the entire sequence? If you find a spot where it misses, press <strong>Pause</strong> and adjust the box. After you have checked your work, press the <strong>Submit HIT</strong> button. We will pay you as soon as possible.</p>");
+    h.append("<p>当你准备提交工作时，再次重新播放并仔细检查视频。在整个过程中是否每一个矩形都追寻着他所追踪的目标？如果你发现遗漏了某一个点，点击<strong>暂停</strong> 调整盒子。检查完工作之后，点击 <strong>暂停</strong>  调整盒子。检查完工作之后，点击 <strong>提交</strong>按钮。我们会尽快支付你。</p>");
 
-    h.append("<h2>How We Accept Your Work</h2>");
-    h.append("<p>We will hand review your work and we will only accept high quality work. Your annotations are not compared against other workers. Follow these guidelines to ensure your work is accepted:</p>");
+    h.append("<h2>我们认可你的工作的标准</h2>");
+    h.append("<p>我们将回顾你的工作并只接受高质量的工作，你的标注不会和其他工作者相比较。请遵循这些指导方针以确保你的工作被认可：</p>");
 
-    h.append("<h3>Label Every Object</h3>")
+    h.append("<h3>标注每一个对象</h3>")
     h.append('<iframe title="YouTube video player" width="560" height="349" src="http://www.youtube.com/embed/H8cMZkz8Kbw?rel=0" frameborder="0" allowfullscreen></iframe>');
     //h.append("<img src='secret.png'>");
     //h.append("<img src='everyobject.jpg'>");
 
     if (job.perobject > 0)
     {
-        h.append("<p>Every object of interest should be labeled for the entire video. The above work was accepted because every object has a box around it. An object is not labeled more than once. Even if the object does not move, you must label it. We will pay you a bonus for every object you annotate.</p>");
+        h.append("<p>在整个视频中，每一个对象都应该被打上标签。以上工作被认可，是因为每一个目标都有包围的盒子。任何一个目标的漏标不应该超过一次及时目标没有移动，你也应该标注他。我们会奖励你为你所标记了每一个目标。</p>");
     }
     else
     {
-        h.append("<p>Every object of interest should be labeled for the entire video. The above work was accepted because every object has a box around it. An object is not labeled more than once. Even if the object does not move, you must label it.</p>");
+        h.append("<p>在整个视频中，每一个对象都应该被打上标签。以上工作被认可，是因为每一个目标都有包围的盒子。任何一个目标的漏标不应该超过一次及时目标没有移动，你也应该标注他。我们会奖励你为你所标记了每一个目标。  </p>");
     }
 
-    h.append("<h3>Boxes Are Tight</h3>");
+    h.append("<h3>盒子紧密</h3>");
     h.append("<table><tr><td><img src='tight-good.jpg'></td><td><img src='tight-bad.jpg'></td></tr><tr><th>Good</th><th>Bad</th></tr></table>");
-    h.append("<p>The boxes you draw must be tight. They boxes must fit around the object as close as possible. The loose annotation on the right would be rejected while the tight annotation on the left will be accepted.</p>");
+    h.append("<p>你所画的盒子必须紧密。所画的盒子必须尽可能的贴合目标。右边松散的标注会被拒绝，而左边紧密的标注将会被接受。</p>");
 
-    h.append("<h3>Entire Video is Labeled</h3>")
+    h.append("<h3>标注整个视频</h3>")
     h.append("<img src='sequence1.jpg'> ");
     h.append("<img src='sequence3.jpg'> ");
     h.append("<img src='sequence4.jpg'><br>");
-    h.append("<p>The entire video sequence must be labeled. When an object moves, you must update its position. A box must describe only one object. You should never change which object identity a particular box tracks.</p>");
+    h.append("<p>整个视频必须都被标注。当一个目标移动时，你需要更新他的位置。 一个盒子只能标注一个目标。一个盒子必须一直对应他所追踪的物体。</p>");
 
-    h.append("<h3>Disappearing and Reappearing Objects</h3>");
-    h.append("<p>In order for your work to be accepted, you must correctly label objects as they enter and leave the scene. We want you to annotate the moment each object enters and leaves the scene. As it is often difficult to pinpoint the exact moment an object enters or leaves the scene, we allow some mistakes here, but only slightly!</p>");
+    h.append("<h3>消失和再次出现的物体</h3>");
+    h.append("<p>为了确保你的工作被接受，你应该在他们离开和进入屏幕时打上相应的标签。我们希望你标注上目标进入和离开屏幕的时间。通常很难找到他们进入和离开屏幕的确切时间，我们允许你的标注出现轻微的误差。</p>");
 
     h.append("<img src='entering1.png'> <img src='entering2.png'> <img src='entering3.png'> <img src='entering4.png'><br>");
 
-    h.append("<p>If one object enters another object (such as a person getting inside a car), you should mark the disappearing object as outside of the view frame. Likewise, you should start annotating an object the moment it steps out of the enclosing object.</p>");
+    h.append("<p>如果一个目标进入另一个目标（比如一个人进入一辆车内），你应该在这帧之外标注出这个消失的目标。同样的, 当一个目标走出包围他的目标时，你也应该打上标注。</p>");
 
     h.append("<img src='outofcar1.png'> <img src='outofcar2.png'> <img src='outofcar3.png'> <br>");
 
-    h.append("<p>If an object disappears from the scene and the exact same object reappears later in the scene, you must mark that object as back inside the view frame. Do <em>not</em> draw a new object for its second appearance. Simply find the corresponding right-column rectangle and uncheck the <strong>Outside of view frame</strong> checkbox and position the box.</p>");
+    h.append("<p>如果一个目标消失后又再次出现，你应该在这帧里标注出他的回归。切记 <em>不要</em> 在他重新出现时以一个新物体来标注。只用在右侧的矩形框中找到相应的复选框，取消选中的<strong>在该视图帧之外</strong> 复选框并将盒子放在合适的位置。</p>");
 
-    h.append("<h2>Advanced Features</h2>");
-    h.append("<p>We have provided some advanced tools for videos that are especially difficult. Clicking the <strong>Options</strong> button will enable the advanced options.</p>");
+    h.append("<h2>高级功能</h2>");
+    h.append("<p>我们也为那些特别难的视频提供了一些高级工具，点击<strong>选择</strong> 按钮可以使用这些高级工具。</p>");
     h.append("<ul>" +
-        "<li>Clicking <strong>Disable Resize?</strong> will toggle between allowing you to resize the boxes. This option is helpful when the boxes become especially tiny.</li>" +
-        "<li>Clicking <strong>Hide Boxes?</strong> will temporarily hide the boxes on the screen. This is useful when the scene becomes too crowded. Remember to click it again to show the boxes again!</li>" +
-        "<li>The <strong>Slow</strong>, <strong>Normal</strong>, <strong>Fast</strong> buttons will change how fast the video plays back. If the video becomes confusing, slowing the play back speed may help.</li>" +
+        "<li>点击<strong>禁用调整？</strong>将允许你调整盒子。当盒子特别小的时候这个选项是很有帮助的。</li>" +
+        "<li>点击<strong>隐藏盒子？</strong> 会暂时隐藏屏幕上的盒子。当屏幕变得很拥挤时这个选项是很有帮助的。记得再次点击使盒子重新出现在屏幕！</li>" +
+        "<li>按钮 <strong>慢放</strong>, <strong>正常</strong>, <strong>快进</strong> 会改变视频的回放速度。如果视频内容很混乱，慢放视频会很有帮助。</li>" +
     "</ul>");
 
-    h.append("<h3>Keyboard Shortcuts</h3>");
-    h.append("<p>These keyboard shortcuts are available for your convenience:</p>");
+    h.append("<h3>快捷键</h3>");
+    h.append("<p>为方便起见，这些快捷键可用：</p>");
     h.append('<ul class="keyboardshortcuts">' +
-        '<li><code>n</code> creates a new object</li>' +
-        '<li><code>t</code> toggles play/pause on the video</li>' +
-        '<li><code>r</code> rewinds the video to the start</li>' +
-        '<li><code>h</code> hides/shows the boxes (only after clicking Options button)</li>' +
-        '<li><code>d</code> jump the video forward a bit</li>' +
-        '<li><code>f</code> jump the video backward a bit</li>' +
-        '<li><code>v</code> step the video forward a tiny bit</li>' +
-        '<li><code>c</code> step the video backward a tiny bit</li>' +
+        '<li><code>n</code> 创建一个新目标</li>' +
+        '<li><code>t</code>暂停或播放视频</li>' +
+        '<li><code>r</code> 倒回到视频的最开始</li>' +
+        '<li><code>h</code> 隐藏或显现盒子（只有在点击选项按钮之后可用）</li>' +
+        '<li><code>d</code> 向前跳播一大段视频</li>' +
+        '<li><code>f</code> 向后跳播一大段视频</li>' +
+        '<li><code>v</code> 向前跳播一小段视频</li>' +
+        '<li><code>c</code> 向后跳播一小段视频</li>' +
         '</ul>');
 }
