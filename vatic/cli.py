@@ -1132,7 +1132,7 @@ class find(Command):
                     else:
                         print "(not published)"
                 else:
-                    print job.offlineurl(config.localhost)
+                    print job.offlineurl(config.localhost + "ann.html")
         else:
             print "No jobs matching this criteria."
 
