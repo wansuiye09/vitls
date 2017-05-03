@@ -28,11 +28,11 @@ if jobs.count() > 0:
             x = job.segment.videoid
             print("\n" + str(x) + "\t" + job.segment.video.slug)
             f.write("<br/><h3>Video " + str(x) + " " + job.segment.video.slug + "<h3>") 
-        print job.offlineurl(config.localhost)
+        print job.offlineurl(config.localhost + "ann.html")
         f.write("<a href='")
-        f.write(job.offlineurl(config.localhost))
+        f.write(job.offlineurl(config.localhost + "ann.html"))
         f.write("'>")
-        f.write(job.offlineurl(config.localhost))
+        f.write(job.offlineurl(config.localhost + "ann.html"))
         f.write("</a><br/>\n")
 else:
     print "No jobs matching this criteria."
