@@ -1,5 +1,5 @@
 import CITIS.database
-from CITIS.models import *
+import CITIS.models
 from sqlalchemy import Column, Integer, Float, String, Boolean, Text
 from sqlalchemy import ForeignKey, Table, PickleType
 from sqlalchemy.orm import relationship, backref
@@ -21,9 +21,6 @@ class Video(CITIS.database.Base):
 
     id              = Column(Integer, primary_key = True)
     slug            = Column(String(250), index = True)
-    uploaderid      = Column(Integer, ForeignKey(Worker.id))
-    upload          = relationship(Worker, backref=backref("videos",
-                                                cascade="all,delete"))
     width           = Column(Integer)
     height          = Column(Integer)
     totalframes     = Column(Integer)
@@ -36,11 +33,6 @@ class Video(CITIS.database.Base):
     isfortraining   = Column(Boolean, default = False)
     trainvalidator  = Column(PickleType, nullable = True, default = None)
     blowradius      = Column(Integer, default = 5)
-    scene           = Column(String(50))
-    resolutionx     = Column(Integer)
-    resolutiony     = Column(Integer)
-    videoannodocument=Column(String(250))
-    type            = Column(String(40))
 
     def __getitem__(self, frame):
         path = Video.getframepath(frame, self.location)
@@ -282,7 +274,6 @@ class Box(CITIS.database.Base):
     frame = Column(Integer)
     occluded = Column(Boolean, default = False)
     outside = Column(Boolean, default = False)
-    isrevised = Column(Boolean, default = False)
 
     def getbox(self):
         return vision.Box(self.xtl, self.ytl, self.xbr, self.ybr,
