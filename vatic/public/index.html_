@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8"> 
-	<title>任务视频图像标记系统官网</title>
+	<title>XXX标记系统官网</title>
 	<link rel="stylesheet" href="css\bootstrap.min.css">
 	<link rel="stylesheet" href="css\login_main.css">
   <script src="js\jquery-3.2.0.min.js"></script>
@@ -15,7 +15,7 @@
 <nav class="navbar  navbar-static-top">
 <div class="container">
 <div class="page-header">
-    <h4>任务视频图像标记系统
+    <h4>XXX标记系统
         <small>用户登陆</small>
         <button type="button" class="btn navbar-right">
         <a href="login.html">Introduction</a>
@@ -26,60 +26,43 @@
 <!-- Navbar End --> 
 
 
-
 <div class="container">
-<div class="row">
-<div class="col-sm-1">
-</div>
+<div class=" dropdown col-sm-offset-5 col-sm-3">
+    <button  ttype="button" class="btn " data-toggle="dropdown">选择用户类型
+        <span class="caret"></span>
+    </button>
 
-<div class="col-sm-4">
-    <h3>视频图像目标标记系统</h3>
-    <br>
-    <p>视频图像目标标记系统是一个基于众包的WEB端平台。系统支持目标标注以及目标语义标注，具有上传文件、在线标注、审核反馈等功能。
-    </p>
-</div>
-<div class="col-sm-1">
-</div>
+    <ul  class="dropdown-menu" >
+        <li><a href="#">标记人员</a></li>
+        <li><a href="#">审核人员</a></li>
+        <li><a href="#">评价人员</a></li>
+        <li class="divider"></li>
+        <li><a href="#">管理员</a></li>
+    </ul>
 
-<div class="col-sm-6 ">
-
+</div>
 
 
 <form class="form-horizontal" role="form">
 
     <div class="form-group"></div>
-   
-    <label for="name" class="col-sm-3 control-label ">用户类型</label>
-	<div class="radio  ">
-	    <label >
-		    <input type="radio" name="optionsRadios"  value="option1" checked>标注人员
-	    </label>
-   
-	    <label>
-		    <input type="radio" name="optionsRadios"  value="option2">审核人员
-		</label>	
-	    <label>
-		    <input type="radio" name="optionsRadios"  value="option2">评价人员
-		</label>
-    </div>
-    <br>
 
 	<div class="form-group">
-		<label for="username" class="col-sm-3 control-label">用户名</label>
-		<div class="col-sm-5">
-			<input type="text" class="form-control col-sm-5" id="username" 
+		<label for="username" class="col-sm-5 control-label">用户名</label>
+		<div class="col-sm-3">
+			<input type="text" class="form-control" id="username" 
 				   placeholder="请输入用户名">
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="password" class="col-sm-3 control-label">密码</label>
-		<div class="col-sm-5">
+		<label for="password" class="col-sm-5 control-label">密码</label>
+		<div class="col-sm-3">
 			<input type="text" class="form-control" id="password" 
 				   placeholder="请输入密码，区分大小写">
 		</div>
 	</div>
 	<div class="form-group">
-		<div class="col-sm-offset-3 col-sm-9">
+		<div class="col-sm-offset-5 col-sm-10">
 			<div class="checkbox">
 				<label>
 					<input type="checkbox"> 记住我
@@ -88,19 +71,18 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<div class="col-sm-offset-3 col-sm-9">
-			<button type="submit" class="btn ">登陆</button> <a herf="#">忘记密码？</a>
+		<div class="col-sm-offset-5 col-sm-10">
+			<button type="submit" class="btn "><a href="list.html">登陆</button> <a herf="#">忘记密码？</a>
 		</div>
 	</div>
 	<div class="form-group">
-		<div class="col-sm-offset-3 col-sm-9">
+		<div class="col-sm-offset-5 col-sm-10">
 			<button type="submit" class="btn "><a href="register.html">注册新用户</a></button>
 		</div>
 	</div>
 </form>
-</div>
 
-</div>
+
 </div>
 
 <hr>
@@ -108,7 +90,7 @@
 <!--copyright-->
 
 <hr>
-<div class="container">
+<div class="row">
     <div class="text-center col-md-6 col-md-offset-3 "> 
         <p> Copyright 2016-2017</p>  
     </div>
