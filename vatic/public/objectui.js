@@ -147,7 +147,7 @@ function TrackObjectUI(button, container, videoframe, job, player, tracks)
             me.stopdrawing(position);
         });
 
-        var html = "<p>In this video, please track all of these objects:</p>";
+        var html = "<p>在此视频中，请标注所有下列物体：</p>";
         html += "<ul>";
         for (var i in this.job.labels)
         {
@@ -285,7 +285,7 @@ function TrackObject(job, player, container, color)
 
     this.statedraw = function()
     {
-        var html = "<p>Draw a box around one of these objects:</p>"; 
+        var html = "<p>为这些物体绘制标注框：</p>"; 
 
         html += "<ul>";
         for (var i in this.job.labels)
@@ -293,7 +293,7 @@ function TrackObject(job, player, container, color)
             html += "<li>" + this.job.labels[i] + "</li>";
         }
         html += "</ul>";
-        html += "<p>Do not annotate the same object twice.</p>";
+        html += "<p>请勿重复标注同一个物体。</p>";
 
         this.drawinst = $("<div>" + html + "</div>").appendTo(this.handle);
         this.drawinst.hide().slideDown();
@@ -323,7 +323,7 @@ function TrackObject(job, player, container, color)
         }
         else
         {
-            var html = "<p>What type of object did you just annotate?</p>";
+            var html = "<p>你刚刚标注的是什么类型的物体？</p>";
             for (var i in job.labels)
             {
                 var id = "classification" + this.id + "_" + i;
@@ -406,8 +406,8 @@ function TrackObject(job, player, container, color)
 
     this.setupdetails = function()
     {
-        this.details.append("<input type='checkbox' id='trackobject" + this.id + "lost'> <label for='trackobject" + this.id + "lost'>Outside of view frame</label><br>");
-        this.details.append("<input type='checkbox' id='trackobject" + this.id + "occluded'> <label for='trackobject" + this.id + "occluded'>Occluded or obstructed</label><br>");
+        this.details.append("<input type='checkbox' id='trackobject" + this.id + "lost'> <label for='trackobject" + this.id + "lost'>超出当前帧</label><br>");
+        this.details.append("<input type='checkbox' id='trackobject" + this.id + "occluded'> <label for='trackobject" + this.id + "occluded'>物体被遮挡</label><br>");
 
         for (var i in this.job.attributes[this.track.label])
         {
