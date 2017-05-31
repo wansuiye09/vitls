@@ -64,9 +64,7 @@ function instructions(job, h)
     h.append("<p>我们将回顾你的工作并只接受其中高质量的部分，你的标注不会和其他工作者相比较。请遵循这些指导方针以确保你的工作被认可：</p>");
 
     h.append("<h3>标注每一个目标物体</h3>")
-    h.append('<iframe title="YouTube video player" width="560" height="349" src="http://www.youtube.com/embed/H8cMZkz8Kbw?rel=0" frameborder="0" allowfullscreen></iframe>');
-    //h.append("<img src='secret.png'>");
-    //h.append("<img src='everyobject.jpg'>");
+    h.append("<embed height='415' width='544' quality='high' allowfullscreen='true' type='application/x-shockwave-flash' src='//static.hdslb.com/miniloader.swf' flashvars='aid=10832470&page=1' pluginspage='//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash'></embed>")
 
     if (job.perobject > 0)
     {
