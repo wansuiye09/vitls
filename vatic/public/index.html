@@ -7,10 +7,42 @@
 	<link rel="stylesheet" href="css\login_main.css">
   <script src="js\jquery-3.2.0.min.js"></script>
   <script src="js\bootstrap.min.js"></script>
+  <script src="jquery-migrate-1.4.1.min.js"></script>
+  <script src="CITIS\javascript.js"></script>
+  <script>
+    var utype = "option1";
+    $(document).ready(function(){
+        $("#loginbutton").click(function(){
+            var uname = $("#username").val(); //用户名
+            var pwd = $("#password").val(); //密码
+            //alert(utype);
+            if (uname == "")
+                alert("请输入用户名!");
+            else
+                login(uname, pwd);
+            return false;
+            });
+        });
+
+    function login(uname, pwd){
+        server_request("getuserid", [uname, pwd], function(data) {
+
+            if (data != -1) {
+                alert("OK!");
+                location.href = 'list.html';
+            } else {
+                alert("用户名或密码输入错误!");
+            }
+        });
+    }
+
+    function setusertype(_utype){
+        utype = _utype;
+    }
+  </script>
 </head>
 
 <body>  
-
 <!--navbar -->
 <nav class="navbar  navbar-static-top">
 <div class="container">
@@ -50,16 +82,16 @@
     <div class="form-group"></div>
    
     <label for="name" class="col-sm-3 control-label ">用户类型</label>
-	<div class="radio  ">
-	    <label >
-		    <input type="radio" name="optionsRadios"  value="option1" checked>标注人员
+	<div class="radio" id="usertype">
+	    <label>
+		    <input type="radio" name="optionsRadios" onclick="setusertype(this.value)" value="option1" checked>标注人员
 	    </label>
    
 	    <label>
-		    <input type="radio" name="optionsRadios"  value="option2">审核人员
+		    <input type="radio" name="optionsRadios" onclick="setusertype(this.value)" value="option2">审核人员
 		</label>	
 	    <label>
-		    <input type="radio" name="optionsRadios"  value="option2">评价人员
+		    <input type="radio" name="optionsRadios" onclick="setusertype(this.value)" value="option3">评价人员
 		</label>
     </div>
     <br>
@@ -70,26 +102,19 @@
 			<input type="text" class="form-control col-sm-5" id="username" 
 				   placeholder="请输入用户名">
 		</div>
+        <p id="tip1"><p>
 	</div>
 	<div class="form-group">
 		<label for="password" class="col-sm-3 control-label">密码</label>
 		<div class="col-sm-5">
-			<input type="text" class="form-control" id="password" 
+			<input type="password" class="form-control" id="password" 
 				   placeholder="请输入密码，区分大小写">
 		</div>
+        <p id="tip"></p>
 	</div>
 	<div class="form-group">
 		<div class="col-sm-offset-3 col-sm-9">
-			<div class="checkbox">
-				<label>
-					<input type="checkbox"> 记住我
-				</label>
-			</div>
-		</div>
-	</div>
-	<div class="form-group">
-		<div class="col-sm-offset-3 col-sm-9">
-			<button type="submit" class="btn "><a href="list.html">登陆</button> <a herf="#">忘记密码？</a>
+			<button type="submit" class="btn " id="loginbutton">登陆</button> <a herf="#">忘记密码？</a>
 		</div>
 	</div>
 	<div class="form-group">
