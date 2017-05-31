@@ -1,3 +1,4 @@
+#coding=utf-8
 from CITIS.database import session
 from models import *
 
@@ -10,7 +11,8 @@ f.write('''
 <html>
 <head>
 
-<title>list</title>
+<meta charset="utf-8">
+<title>标注任务</title>
 
 </head>
 <body>
@@ -21,13 +23,13 @@ f.write('''
 
 
 if jobs.count() > 0:
-    f.write("<h1>LIST</h1>")
+    f.write("<h1>标注任务</h1>")
     x = 0
     for job in jobs:
         if x != job.segment.videoid:
             x = job.segment.videoid
             print("\n" + str(x) + "\t" + job.segment.video.slug)
-            f.write("<br/><h3>Video " + str(x) + " " + job.segment.video.slug + "<h3>") 
+            f.write("<br/><h3>视频 " + str(x) + " " + job.segment.video.slug + "<h3>") 
         print job.offlineurl(config.localhost + "ann.html")
         f.write("<a href='")
         f.write(job.offlineurl(config.localhost + "ann.html"))
