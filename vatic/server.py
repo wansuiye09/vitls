@@ -1,3 +1,4 @@
+#coding=utf-8
 import os.path, sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
@@ -138,8 +139,12 @@ def respawnjob(id):
 
 @handler()
 def getuserid(uname, pwd):
-    user = session.query(Worker).filter(Worker.username == uname).filter(Worker.password == pwd)
+    user = session.query(Worker)
+    user = user.filter(Worker.username == uname)
+    user = user.filter(Worker.password == pwd)
+    #user = user.filter(Worker.type == '???')
     if user.count() == 1:
         return user.one().id
     else:
         return -1
+
