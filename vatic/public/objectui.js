@@ -411,7 +411,7 @@ function TrackObject(job, player, container, color)
 
         for (var i in this.job.attributes[this.track.label])
         {
-            this.details.append("<input type='checkbox' id='trackobject" + this.id + "attribute" + i + "'> <label for='trackobject" + this.id + "attribute" + i +"'>" + this.job.attributes[this.track.label][i] + "</label><br>");
+            this.details.append("<input type='radio' name='x" + this.id +"' id='trackobject" + this.id + "attribute" + i + "'> <label for='trackobject" + this.id + "attribute" + i +"'>" + this.job.attributes[this.track.label][i] + "</label><br>");
 
             // create a closure on attributeid
             (function(attributeid) {
@@ -420,10 +420,15 @@ function TrackObject(job, player, container, color)
                     me.player.pause();
 
                     var checked = $(this).attr("checked");
-                    me.track.setattribute(attributeid, checked ? true : false);
-                    me.track.notifyupdate();
-
-                    me.updateboxtext();
+                    for (var aid in me.job.attributes[me.track.label])
+                        if (aid != attributeid){
+                            me.track.setattribute(aid, false);
+                            me.track.notifyupdate();
+                            me.updateboxtext();}
+                        else{
+                            me.track.setattribute(aid, true);
+                            me.track.notifyupdate();
+                            me.updateboxtext();}
 
                     if (checked) 
                     {
