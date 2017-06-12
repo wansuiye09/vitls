@@ -501,7 +501,7 @@ class visualize(DumpCommand):
         offset = 100
         for im, frame in frames:
             aug = Image.new(im.mode, (im.size[0], im.size[1] + offset))
-            aug.paste("black")
+            #aug.paste("black")
             aug.paste(im, (0, 0))
             draw = ImageDraw.ImageDraw(aug)
 
