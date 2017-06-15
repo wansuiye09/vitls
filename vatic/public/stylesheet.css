@@ -233,6 +233,10 @@ code
 
 #instructionsclosetop
 {
+    z-index : 9999;
+    position : fixed;
+    left : 50%
+    margin-left : 220px;
     float : right;
     font-weight : bold;
 }
