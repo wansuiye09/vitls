@@ -36,7 +36,7 @@ contents of the file with:
     WSGIProcessGroup www-data
 
     <VirtualHost *:80>
-        ServerName vatic.domain.edu
+        ServerName 127.0.0.1
         DocumentRoot /path/to/vatic/public
 
         WSGIScriptAlias /server /path/to/vatic/server.py
