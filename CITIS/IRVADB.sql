@@ -146,7 +146,7 @@ CREATE TABLE `CITIS_hits` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '打标编号',
   `hitslug` varchar(30) CHARACTER SET latin1 DEFAULT NULL COMMENT '打标标识',
   `groupid` int(11) DEFAULT NULL COMMENT '所属任务组（外键）',
-  `description` blob COMMENT '任务描述',
+  `description` text COMMENT '任务描述',
   `depth` float DEFAULT NULL COMMENT '任务难度',
   `workerid` int(11) DEFAULT NULL COMMENT '3:标注者编号',
   `checkerid` int(11) DEFAULT NULL COMMENT '2:校验者编号',
@@ -157,11 +157,11 @@ CREATE TABLE `CITIS_hits` (
   `checked` tinyint(1) DEFAULT '0' COMMENT '2:是否已被审核',
   `accepted` tinyint(1) DEFAULT '0' COMMENT '是否被接收',
   `validated` tinyint(1) DEFAULT '0' COMMENT '是否有效',
-  `unvareason` blob COMMENT '无效原因',
+  `reason` text COMMENT '原因',
   `isdisputed` tinyint(1) DEFAULT '0' COMMENT '是否标注着有争议',
-  `disputedcontent` blob COMMENT '提议内容',
+  `disputedcontent` text COMMENT '提议内容',
   `commenterid` int(11) DEFAULT NULL COMMENT '4:评论者编号',
-  `comments` blob COMMENT '4:评价',
+  `comments` text COMMENT '4:评价',
   `timeaccepted` datetime DEFAULT NULL COMMENT '约定时间',
   `timecompleted` datetime DEFAULT NULL COMMENT '完成时间',
   `timeonserver` datetime DEFAULT NULL COMMENT '在服务器上的时间',
@@ -172,8 +172,8 @@ CREATE TABLE `CITIS_hits` (
   `donatedamount` float NOT NULL DEFAULT '0' COMMENT '捐助金额',
   `bonusamount` float NOT NULL DEFAULT '0' COMMENT '薪酬总计',
   `useful` tinyint(1) DEFAULT '1' COMMENT '是否有用',
-  `type` varchar(250) CHARACTER SET latin1 DEFAULT NULL COMMENT '类型eg：jpbs',
   `annodocument` varchar(250) DEFAULT NULL COMMENT '标记xml文档保存路径',
+  `type` varchar(250) CHARACTER SET latin1 DEFAULT NULL COMMENT '类型eg：jpbs',
   PRIMARY KEY (`id`),
   KEY `checkerid` (`checkerid`),
   KEY `commenterid` (`commenterid`),
@@ -193,7 +193,6 @@ CREATE TABLE `CITIS_hits` (
 
 /*Table structure for table `CITIS_users` */
 
-insert  into `CITIS_users`(`id`,`username`,`password`,`type`,`address`,`email`,`age`,`gender`,`numaccount`,`phonenum`,`workexper`,`educationback`,`userlevel`,`numuploaded`,`numsubmitted`,`numacceptances`,`numrejections`,`blocked`,`bonusamount`,`verified`) values (1,'annoter1','annoter1','标注员','软件所','annoter1@163.com',20,'男',NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,NULL,0,1),(2,'annoter2','annoter1','标注员','软件所','annoter2@163.com',30,'女',NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,NULL,0,1),(3,'auditor','auditor','审计员','软件所','auditor@163.com',20,'男',NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,1),(4,'commentor1','commentor1','评议员','软件所','commentor1@163.com',30,'女',NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,1);
 
 DROP TABLE IF EXISTS `CITIS_users`;
 
@@ -222,6 +221,8 @@ CREATE TABLE `CITIS_users` (
   KEY `typeid` (`type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
+
+insert  into `CITIS_users`(`id`,`username`,`password`,`type`,`address`,`email`,`age`,`gender`,`numaccount`,`phonenum`,`workexper`,`educationback`,`userlevel`,`numuploaded`,`numsubmitted`,`numacceptances`,`numrejections`,`blocked`,`bonusamount`,`verified`) values (1,'annoter1','annoter1','标注员','软件所','annoter1@163.com',20,'男',NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,NULL,0,1),(2,'annoter2','annoter1','标注员','软件所','annoter2@163.com',30,'女',NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,NULL,0,1),(3,'auditor','auditor','审计员','软件所','auditor@163.com',20,'男',NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,1),(4,'commentor1','commentor1','评议员','软件所','commentor1@163.com',30,'女',NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,1);
 /*Table structure for table `completion_bonuses` */
 
 DROP TABLE IF EXISTS `completion_bonuses`;
@@ -312,16 +313,18 @@ CREATE TABLE `videos` (
   `height` int(11) DEFAULT NULL COMMENT '高度',
   `totalframes` int(11) DEFAULT NULL COMMENT '总帧数',
   `location` varchar(250) CHARACTER SET latin1 DEFAULT NULL COMMENT '位置',
+  `skip` int(11) NOT NULL,
   `perobjectbonus` float DEFAULT '0' COMMENT '每个对象薪酬',
   `completionbonus` float DEFAULT '0' COMMENT '总视频薪酬',
   `trainwithid` int(11) DEFAULT NULL COMMENT '训练视频的编号',
   `isfortraining` tinyint(1) DEFAULT '0' COMMENT '是否用于训练',
-  `trainvalidator` blob COMMENT '不规范说明',
+  `trainvalidator` text COMMENT '不规范说明',
   `scene` varchar(50) DEFAULT NULL COMMENT '场景',
   `resolutionx` int(20) DEFAULT NULL COMMENT '水平分辨率',
   `resolutiony` int(20) DEFAULT NULL COMMENT '垂直分表率',
   `videoannodocument` varchar(250) DEFAULT NULL COMMENT 'xml文档存储路径',
   `type` enum('仿真','实拍') DEFAULT NULL COMMENT '类型',
+  `blowradius` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `trainwithid` (`trainwithid`),
   KEY `ix_videos_slug` (`slug`),
