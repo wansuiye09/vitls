@@ -1,18 +1,44 @@
-# VATIC - Video Annotation Tool from Irvine, California
-[![build status](https://travis-ci.org/cluePrints/vatic.svg)](https://travis-ci.org/cluePrints/vatic)
+# This is Fork from VATIC  
+https://github.com/cvondrick/vatic
+ 
+————————————————————————————————————————————————————————————————————————————————————————————
+# BEFORE INSTALLATION 
+Use apache2 Mysql5.7.18 in Ubuntu16.04LTS
+prepared：
+sudo apt-get update
 
-VATIC is an online video annotation tool for computer vision research that
-crowdsources work to Amazon's Mechanical Turk. Our tool makes it easy to build
-massive, affordable video data sets. 
+sudo apt-get upgrade
 
-<img src='http://i.imgur.com/z6jl5Bs.jpg'>
+sudo apt-get -y install mysql-server
 
-# INSTALLATION 
+sudo apt-get install -y git python-setuptools python-dev libavcodec-dev libavformat-dev libswscale-dev libjpeg62 libjpeg62-dev libfreetype6 libfreetype6-dev apache2 libapache2-mod-wsgi mysql-server mysql-client libmysqlclient-dev gfortran
 
-Note: VATIC has only been tested on Ubuntu with Apache 2.2 HTTP server and a
-MySQL server. This document will describe installation on this platform,
-however it should work any operating system and with any server.
+sudo apt-get install -y libav-tools
 
+sudo easy_install -U SQLAlchemy pillow wsgilog mysql-python munkres parsedatetime argparse
+
+sudo easy_install -U numpy
+
+
+#Install CITIS
+cd CITIS
+sudo python setup.py install
+cd ..
+
+#Install pyvision
+git clone https://github.com/cluePrints/pyvision.git
+
+#before install pyvision：
+sudo apt-get install -y g++ make
+sudo easy_install pip
+sudo pip install cython==0.20
+
+cd pyvision
+sudo python setup.py install
+cd ..
+
+
+——————————————————————————————————————————————————————————————————————————————————
 ## Download
 
 You can download and extract VATIC from our website. Note: do NOT run the 
