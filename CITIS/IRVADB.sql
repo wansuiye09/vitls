@@ -217,6 +217,7 @@ CREATE TABLE `CITIS_users` (
   `blocked` tinyint(1) DEFAULT '0' COMMENT '是否被锁定',
   `bonusamount` float NOT NULL DEFAULT '0' COMMENT '薪酬总计',
   `verified` tinyint(1) DEFAULT '0' COMMENT '是否被认证',
+  `donatedamount` float NOT NULL DEFAULT '0' COMMENT '捐助数额',
   PRIMARY KEY (`id`),
   KEY `typeid` (`type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
