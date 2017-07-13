@@ -11,6 +11,10 @@ from models import *
 import logging
 logger = logging.getLogger("vatic.server")
 
+#注册导入
+import MySQLdb
+
+
 @handler()
 def getjob(id, verified):
     job = session.query(Job).get(id)
@@ -147,4 +151,33 @@ def getuserid(uname, pwd):
         return user.one().id
     else:
         return -1
+
+@handler()
+def insertUser(uname, pwd,email,type,address):
+    db = MySQLdb.connect("localhost","root"," ","IRVADB" )
+
+    # 使用cursor()方法获取操作游标 
+    cursor = db.cursor()
+
+    # SQL 插入语句
+    sql = """INSERT INTO CITIS_users(id, username, password, type, address, email, gender,numaccount,phonenum,workexper,\
+    educationback,userlevel,numuploaded,numsubmitted,numacceptances, numacceptances,numrejections,blocked,donatedamount,\
+    bonusamount,verified) VALUES (5, uname, pwd,type,address,email,'女','','','','','','',0,0,0,0,0,0,1,0)"""
+    #插入的另一种写法
+    #sql = "INSERT INTO EMPLOYEE(FIRST_NAME, \
+    #      LAST_NAME, AGE, SEX, INCOME) \
+    #    VALUES ('%s', '%s', '%d', '%c', '%d' )" % \
+    #   ('Mac', 'Mohan', 20, 'M', 2000)
+
+    try:
+         # 执行sql语句
+        cursor.execute(sql)
+        # 提交到数据库执行
+        db.commit()
+    except:
+        # Rollback in case there is any error
+         db.rollback()
+
+    # 关闭数据库连接
+    db.close()
 

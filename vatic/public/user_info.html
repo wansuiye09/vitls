@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>标注人员任务</title>
+    <link rel="stylesheet" href="css\bootstrap.min.css">
+    <script src="js\jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="jquery-ui\jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js\jquery.tmpl.min.js"></script>
+    <script src="js\bootstrap.min.js"></script>	
+    </head>
+<body>
+<!--nav bar-->
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+      <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" >任务视频图像标记系统</a>
+      </div>
+  <div id="navbar">
+    <ul class="nav navbar-nav">
+        <li><a href="annotator_task_all.html"><span class="glyphicon glyphicon-file"></span> 可选任务</a></li>
+        <li><a href="annotator_task_done.html"><span class="glyphicon glyphicon-tasks"></span> 已完成任务</a></li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户中心 <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="user_info.html">用户信息</a></li>
+                <li><a href="user_task.html">用户任务</a></li>
+                <li><a href="index.html">注销用户</a></li>
+              </ul>
+        </li>
+    </ul>
+   </div>
+       </div>
+    </nav>
+<!--nav bar-->
+
+<!--container-->
+<div class="container">
+    <div class="row-fluid">
+    <div class="col-sm-12">
+<!--user basic_info-->
+        <div class="span12"><blockquote><h4>用户基本信息</h4></blockquote></div>  
+        <form class="form-inline">
+            <div class="form-group">
+                <h5 class="form-control-static">用户名：<strong>标注者Aico</strong></h5><br>
+                <h5 class="form-control-static">当前密码：<strong>passwd123</strong></h5><br>
+                <h5 class="form-control-static">邮箱：<strong>123@qq.com</strong></h5><br>
+                <h5 class="form-control-static">联系电话：<strong>18500567340</strong></h5><br>
+                <h5 class="form-control-static">用户类型：标注员</h5><br>
+                <h5 class="form-control-static">单位：<strong>软件所</strong></h5><br>
+                <h5 class="form-control-static">年龄：<strong>23</strong></h5><br>
+                <h5 class="form-control-static">性别：<strong>女</strong></h5><br>
+            </div>
+        </form>
+        <button type="button" id="edit" class="btn btn-primary">编 辑</button>  
+<!--user basic_info-->
+<hr>
+<!--user work_info-->
+    <div class="span12"><blockquote><h4>用户工作信息</h4></blockquote></div>  
+        <form class="form-inline">
+            <div class="form-group">
+                <h5 class="form-control-static">总计参与任务数：<strong>12</strong></h5><br>
+                <h5 class="form-control-static">完成合格任务数：<strong>3</strong></h5><br>
+                <h5 class="form-control-static">待完成任务数：<strong>8</strong></h5><br>
+                <h5 class="form-control-static">失败任务数：<strong>1</strong></h5><br>
+                <h5 class="form-control-static">累计报酬：<strong>XXX</strong>元</h5><br>
+                <h5 class="form-control-static">用户等级：<strong>☆☆</strong></h5><br>
+            </div>
+        </form>
+<!--user work_info-->
+    </div>
+    </div>
+</div>
+<!--container-->
+
+<!--copyright-->
+<hr>
+<div class="container">
+	<div class="text-center col-md-6 col-md-offset-3 ">
+		<h5> Copyright 2016-2017</h5>
+	</div>
+</div>
+<hr>
+<!--copyright-->
+
+<script>
+    var statu = 0;
+    var edit = document.getElementById('edit');
+    var item = document.getElementsByTagName('strong');
+    var item_length = item.length-1
+    var item_value = new Array(item_length);
+             
+    for(i = 0; i < item_length; i++){
+        item_value[i] = item[i].innerHTML;
+    }
+             
+    edit.onclick =function(){
+        if(statu == 0){
+            edit.innerHTML= '保 存';
+            edit.className='btn btn-success';
+            for(i = 0; i < item_length; i++){
+                item[i].innerHTML = '<input type="txt" class="item_input form-control" value="'+item_value[i]+'">';
+            }
+            statu = 1;
+        }else{
+            edit.innerHTML= '编 辑';
+            edit.className='btn btn-primary';
+            var item_input = document.getElementsByClassName('item_input');
+            for(i = 0; i < item_length; i++){
+                item_value[i] = item_input[i].value;
+            }
+            for(i = 0; i < item_length; i++){
+                item[i].innerHTML = item_value[i];
+            }
+            statu = 0
+        }
+        return false;
+    }
+</script>
+</body>
+</html>

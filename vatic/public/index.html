@@ -2,44 +2,10 @@
 <html>
 <head>
 	<meta charset="utf-8"> 
-	<title>视频标记系统index</title>
+	<title>视频标记系统login</title>
 	<link rel="stylesheet" href="css\bootstrap.min.css">
 	<link rel="stylesheet" href="css\login_main.css">
-  <script src="js\jquery-3.2.0.min.js"></script>
-  <script src="js\bootstrap.min.js"></script>
-  <script src="jquery-migrate-1.4.1.min.js"></script>
-  <script src="CITIS\javascript.js"></script>
-  <script>
-    var utype = "option1";
-    $(document).ready(function(){
-        $("#loginbutton").click(function(){
-            var uname = $("#username").val(); //用户名
-            var pwd = $("#password").val(); //密码
-            //alert(utype);
-            if (uname == "")
-                alert("请输入用户名!");
-            else
-                login(uname, pwd);
-            return false;
-            });
-        });
-
-    function login(uname, pwd){
-        server_request("getuserid", [uname, pwd], function(data) {
-
-            if (data != -1) {
-                alert("OK!");
-                location.href = 'list.html';
-            } else {
-                alert("用户名或密码输入错误!");
-            }
-        });
-    }
-
-    function setusertype(_utype){
-        utype = _utype;
-    }
-  </script>
+  
 </head>
 
 <body>  
@@ -140,5 +106,43 @@
 </div>
 <hr>
 <!--copyright-->
+
+ <!--script-->
+<script src="js\jquery-3.2.0.min.js"></script>
+  <script src="js\bootstrap.min.js"></script>
+  <script src="jquery-migrate-1.4.1.min.js"></script>
+  <script src="CITIS\javascript.js"></script>
+  <script>
+    var utype = "option1";
+    $(document).ready(function(){
+        $("#loginbutton").click(function(){
+            var uname = $("#username").val(); //用户名
+            var pwd = $("#password").val(); //密码
+            //alert(utype);
+            if (uname == "")
+                alert("请输入用户名!");
+            else
+                login(uname, pwd);
+            return false;
+            });
+        });
+
+    function login(uname, pwd){
+        server_request("getuserid", [uname, pwd], function(data) {
+
+            if (data != -1) {
+                alert("OK!");
+                location.href = 'annotator_task.html';
+            } else {
+                alert("用户名或密码输入错误!");
+            }
+        });
+    }
+
+    function setusertype(_utype){
+        utype = _utype;
+    }
+  </script>
+  <!--script-->
 </body>
 </html>
