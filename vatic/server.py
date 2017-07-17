@@ -142,11 +142,11 @@ def respawnjob(id):
     session.commit()
 
 @handler()
-def getuserid(uname, pwd):
+def getuserid(uname, pwd, utype):
     user = session.query(Worker)
     user = user.filter(Worker.username == uname)
     user = user.filter(Worker.password == pwd)
-    #user = user.filter(Worker.type == '???')
+    user = user.filter(Worker.type == utype)
     if user.count() == 1:
         return user.one().id
     else:

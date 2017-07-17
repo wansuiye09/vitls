@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 	<meta name="viewport" content="width = device-width, initial-scale = 1">
+ 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<title>用户管理界面</title>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+			<h3>
+				用户管理界面
+			</h3>
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a href="#">标注人员</a>
+				</li>
+				<li>
+					<a href="#">审核人员</a>
+				</li>
+				<li>
+					<a href="#">评价人员</a>
+				</li>
+				<li class="dropdown pull-right">
+					 <a href="#" data-toggle="dropdown" class="dropdown-toggle">菜单<strong class="caret"></strong></a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#">用户名</a>
+						</li>
+						<li>
+							<a href="#">设置栏目</a>
+						</li>
+						<li>
+							<a href="#">更多设置</a>
+						</li>
+						<li class="divider">
+						</li>
+						<li>
+							<a href="#">注销</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+<div class="col-sm-12">
+			<table class="table table-hover" id="table">
+				<thead>
+					<tr>
+						<th>
+							编号
+						</th>
+						<th>
+							用户名
+						</th>
+						<th>
+							当前密码
+						</th>
+						<th>
+							邮箱
+						</th>
+						<th>
+							联系电话
+						</th>
+						<th>
+							单位
+						</th>
+						<th>
+							年龄
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							1
+						</td>
+						<td class="user_1"> 
+							标注者
+						</td>
+						<td class="user_1">
+							passwd123
+						</td>
+						<td class="user_1">
+							123@qq.com
+						</td>
+						<td class="user_1">
+							18500567340
+						</td>
+						<td class="user_1">
+							软件所
+						</td>
+						<td class="user_1">
+							23
+						</td>
+						<td>
+							<button type="button" id="edit_1" class="btn btn-primary btn-sm">编辑</button> 
+							<button type="button" class="btn btn-warning btn-sm"><a href="#">删除</a></button>
+						</td>
+					</tr>
+					<tr class="success" id="user_2">
+						<td>
+							2
+						</td>
+						<td>
+							<strong>标注者</strong>
+						</td>
+						<td>
+							<strong>passwd123</strong>
+						</td>
+						<td>
+							<strong>123@qq.com</strong>
+						</td>
+						<td>
+							<strong>18500567340</strong>
+						</td>
+						<td>
+							<strong>软件所</strong>
+						</td>
+						<td>
+							<strong>23</strong></h5>
+						</td>
+						<td>
+							<button type="button" id="edit" class="btn btn-primary btn-sm">编辑</button> 
+							<button type="button" class="btn btn-warning btn-sm"><a href="#">删除</a></button>
+						</td>
+					</tr>
+					<tr class="error" id="user_3">
+						<td>
+							3
+						</td>
+						<td>
+							<strong>标注者</strong>
+						</td>
+						<td>
+							<strong>passwd123</strong>
+						</td>
+						<td>
+							<strong>123@qq.com</strong>
+						</td>
+						<td>
+							<strong>18500567340</strong>
+						</td>
+						<td>
+							<strong>软件所</strong>
+						</td>
+						<td>
+							<strong>23</strong></h5>
+						</td>
+						<td>
+							<button type="button" id="edit" class="btn btn-primary btn-sm">编辑</button> 
+							<button type="button" class="btn btn-warning btn-sm"><a href="#">删除</a></button>
+						</td>
+					</tr>
+					<tr class="warning" id="user_4">
+						<td>
+							4
+						</td>
+						<td>
+							<strong>标注者</strong>
+						</td>
+						<td>
+							<strong>passwd123</strong>
+						</td>
+						<td>
+							<strong>123@qq.com</strong>
+						</td>
+						<td>
+							<strong>18500567340</strong>
+						</td>
+						<td>
+							<strong>软件所</strong>
+						</td>
+						<td>
+							<strong>23</strong></h5>
+						</td>
+						<td>
+							<button type="button" id="edit" class="btn btn-primary btn-sm">编辑</button> 
+							<button type="button" class="btn btn-warning btn-sm"><a href="#">删除</a></button>
+						</td>
+					</tr>
+					<tr class="info" id="user_5">
+						<td>
+							5
+						</td>
+						<td>
+							<strong>标注者</strong>
+						</td>
+						<td>
+							<strong>passwd123</strong>
+						</td>
+						<td>
+							<strong>123@qq.com</strong>
+						</td>
+						<td>
+							<strong>18500567340</strong>
+						</td>
+						<td>
+							<strong>软件所</strong>
+						</td>
+						<td>
+							<strong>23</strong></h5>
+						</td>
+						<td>
+							<button type="button" id="edit" class="btn btn-primary btn-sm">编辑</button> 
+							<button type="button" class="btn btn-warning btn-sm"><a href="#">删除</a></button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+</div>
+
+<nav aria-label="Page navigation" align="center">
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+</div></div>
+
+<script>
+    var statu = 0;
+    var edit = document.getElementById('edit_1');
+    var item = document.getElementsByClassName('user_1');
+    var item_length = item.length-1
+    var item_value = new Array(item_length);     
+    for(var i = 0; i < item_length; i++){
+        item_value[i] = item[i].innerHTML;
+    }
+	
+    edit.onclick=function(){
+		
+        if(statu == 0){
+            edit.innerHTML= '保存';
+            edit.className='btn btn-success btn-sm';
+            for(var i = 0; i < item_length; i++){
+				//var str = "";
+  				//str += "<input type='txt' class='item_input form-control' value='"+item_value[i]+"'>";
+				 item[i].innerHTML = '<input type="text" class="item_input form-control" value="' +item_value[i]+ '">';
+				 
+            }
+        statu = 1;
+        }else{
+            edit.innerHTML= '编辑';
+            edit.className='btn btn-primary btn-sm';
+            var item_input = document.getElementsByClassName('item_input');
+            for(var i = 0; i < item_length; i++){
+                item_value[i] = item_input[i].value;
+            }
+            for(var i = 0; i < item_length; i++){
+                item[i].innerHTML = item_value[i];
+            }
+            statu = 0
+        }
+        return false;
+    }
+</script>
+<!--
+<script>
+    var statu = 0;
+    var edit = document.getElementById('edit_2');
+    var t = document.getElementsById('table');
+
+    var item_length = item.length-1
+    var item_value = new Array(item_length);
+             
+    for(i = 0; i < item_length; i++){
+        item_value[i] = item[i].innerHTML;
+    }
+             
+    edit.onclick = function(){
+        if(statu == 0){
+            edit_2.innerHTML= '保 存';
+            edit_2.className='btn btn-success btn-sm';
+            for(i = 0; i < item_length; i++){
+                item[i].innerHTML = '<input type="txt" class="item_input form-control" value="'+item_value[i]+'">';
+            }
+            statu = 1;
+        }else{
+            edit_2.innerHTML= '编 辑';
+            edit_2.className='btn btn-primary btn-sm';
+            var item_input = document.getElementsByClassName('item_input');
+            for(i = 0; i < item_length; i++){
+                item_value[i] = item_input[i].value;
+            }
+            for(i = 0; i < item_length; i++){
+                item[i].innerHTML = item_value[i];
+            }
+            statu = 0
+        }
+        return false;
+    }
+</script>
+<script>
+    var statu = 0;
+    var edit = document.getElementById('edit_3');
+    var t = document.getElementsById('table');
+
+    var item_length = item.length-1
+    var item_value = new Array(item_length);
+             
+    for(i = 0; i < item_length; i++){
+        item_value[i] = item[i].innerHTML;
+    }
+             
+    edit.onclick = function(){
+        if(statu == 0){
+            edit_3.innerHTML= '保 存';
+            edit_3.className='btn btn-success btn-sm';
+            for(i = 0; i < item_length; i++){
+                item[i].innerHTML = '<input type="txt" class="item_input form-control" value="'+item_value[i]+'">';
+            }
+            statu = 1;
+        }else{
+            edit_3.innerHTML= '编 辑';
+            edit_3.className='btn btn-primary btn-sm';
+            var item_input = document.getElementsByClassName('item_input');
+            for(i = 0; i < item_length; i++){
+                item_value[i] = item_input[i].value;
+            }
+            for(i = 0; i < item_length; i++){
+                item[i].innerHTML = item_value[i];
+            }
+            statu = 0
+        }
+        return false;
+    }
+</script>
+<script>
+    var statu = 0;
+    var edit = document.getElementById('edit_4');
+    var t = document.getElementsById('table');
+
+    var item_length = item.length-1
+    var item_value = new Array(item_length);
+             
+    for(i = 0; i < item_length; i++){
+        item_value[i] = item[i].innerHTML;
+    }
+             
+    edit.onclick = function(){
+        if(statu == 0){
+            edit_4.innerHTML= '保 存';
+            edit_4.className='btn btn-success btn-sm';
+            for(i = 0; i < item_length; i++){
+                item[i].innerHTML = '<input type="txt" class="item_input form-control" value="'+item_value[i]+'">';
+            }
+            statu = 1;
+        }else{
+            edit_4.innerHTML= '编 辑';
+            edit_4.className='btn btn-primary btn-sm';
+            var item_input = document.getElementsByClassName('item_input');
+            for(i = 0; i < item_length; i++){
+                item_value[i] = item_input[i].value;
+            }
+            for(i = 0; i < item_length; i++){
+                item[i].innerHTML = item_value[i];
+            }
+            statu = 0
+        }
+        return false;
+    }
+</script>
+<script>
+    var statu = 0;
+    var edit = document.getElementById('edit_5');
+    var t = document.getElementsById('table');
+
+    var item_length = item.length-1
+    var item_value = new Array(item_length);
+             
+    for(i = 0; i < item_length; i++){
+        item_value[i] = item[i].innerHTML;
+    }
+             
+    edit.onclick = function(){
+        if(statu == 0){
+            edit_5.innerHTML= '保 存';
+            edit_5.className='btn btn-success btn-sm';
+            for(i = 0; i < item_length; i++){
+                item[i].innerHTML = '<input type="txt" class="item_input form-control" value="'+item_value[i]+'">';
+            }
+            statu = 1;
+        }else{
+            edit_5.innerHTML= '编 辑';
+            edit_5.className='btn btn-primary btn-sm';
+            var item_input = document.getElementsByClassName('item_input');
+            for(i = 0; i < item_length; i++){
+                item_value[i] = item_input[i].value;
+            }
+            for(i = 0; i < item_length; i++){
+                item[i].innerHTML = item_value[i];
+            }
+            statu = 0
+        }
+        return false;
+    }
+</script>
+-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>

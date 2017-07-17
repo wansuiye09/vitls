@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8"> 
-	<title>视频标记系统login</title>
+	<title>视频标记系统登录</title>
 	<link rel="stylesheet" href="css\bootstrap.min.css">
 	<link rel="stylesheet" href="css\login_main.css">
   
@@ -49,16 +49,9 @@
    
     <label for="name" class="col-sm-3 control-label ">用户类型</label>
 	<div class="radio" id="usertype">
-	    <label>
-		    <input type="radio" name="optionsRadios" onclick="setusertype(this.value)" value="option1" checked>标注人员
-	    </label>
-   
-	    <label>
-		    <input type="radio" name="optionsRadios" onclick="setusertype(this.value)" value="option2">审核人员
-		</label>	
-	    <label>
-		    <input type="radio" name="optionsRadios" onclick="setusertype(this.value)" value="option3">评价人员
-		</label>
+	    <label><input type="radio" name="optionsRadios" onclick="setusertype(this.value)" value="标注员">标注人员</label>
+	    <label><input type="radio" name="optionsRadios" onclick="setusertype(this.value)" value="审计员">审核人员</label>	
+	    <label><input type="radio" name="optionsRadios" onclick="setusertype(this.value)" value="评议员">评价人员</label>
     </div>
     <br>
 
@@ -113,28 +106,37 @@
   <script src="jquery-migrate-1.4.1.min.js"></script>
   <script src="CITIS\javascript.js"></script>
   <script>
-    var utype = "option1";
+    
+    
     $(document).ready(function(){
-        $("#loginbutton").click(function(){
+        $("#loginbutton").click(function(){  
             var uname = $("#username").val(); //用户名
-            var pwd = $("#password").val(); //密码
-            //alert(utype);
+            var pwd = $("#password").val(); //密码   
+            var arrChk=$("input[name='optionsRadios']:checked");//身份
+            var utype;
+            for (var i=0;i<arrChk.length;i++){     
+                utype=arrChk[i].value;
+            }
+            
             if (uname == "")
                 alert("请输入用户名!");
             else
-                login(uname, pwd);
+                login(uname, pwd, utype);
             return false;
             });
         });
 
-    function login(uname, pwd){
-        server_request("getuserid", [uname, pwd], function(data) {
+    function login(uname, pwd, utype){
+        server_request("getuserid", [uname, pwd, utype], function(data) {
 
             if (data != -1) {
-                alert("OK!");
-                location.href = 'annotator_task.html';
+                alert("登录成功");
+                //if(arrChk[i].value=="身份：标注员"){
+                    location.href = 'annotator_task.html';
+                //}
+                    
             } else {
-                alert("用户名或密码输入错误!");
+                alert("登录失败!");
             }
         });
     }
