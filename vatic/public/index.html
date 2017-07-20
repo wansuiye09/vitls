@@ -49,9 +49,9 @@
    
     <label for="name" class="col-sm-3 control-label ">用户类型</label>
 	<div class="radio" id="usertype">
-	    <label><input type="radio" name="optionsRadios" onclick="setusertype(this.value)" value="标注员">标注人员</label>
-	    <label><input type="radio" name="optionsRadios" onclick="setusertype(this.value)" value="审计员">审核人员</label>	
-	    <label><input type="radio" name="optionsRadios" onclick="setusertype(this.value)" value="评议员">评价人员</label>
+	    <label><input type="radio" name="optionsRadios" onclick="setusertype(this.value)" value="Annotator">标注人员</label>
+	    <label><input type="radio" name="optionsRadios" onclick="setusertype(this.value)" value="Auditor">审核人员</label>	
+	    <label><input type="radio" name="optionsRadios" onclick="setusertype(this.value)" value="Valuator">评价人员</label>
     </div>
     <br>
 
@@ -116,6 +116,7 @@
             var utype;
             for (var i=0;i<arrChk.length;i++){     
                 utype=arrChk[i].value;
+                alert(utype);
             }
             
             if (uname == "")
@@ -127,13 +128,18 @@
         });
 
     function login(uname, pwd, utype){
-        server_request("getuserid", [uname, pwd, utype], function(data) {
+        server_request("getuserid", [uname, pwd/*, utype*/], function(data) {
 
             if (data != -1) {
                 alert("登录成功");
-                //if(arrChk[i].value=="身份：标注员"){
-                    location.href = 'annotator_task.html';
-                //}
+                if(utype=="Annotator"){
+                    location.href = 'annotator_task.html';}
+                 else if(utype=="Auditor"){
+                     location.href = 'auditor_task.html';
+                 }
+                 else if(utype=="Valuator"){
+                     location.href = 'valuator_task.html';
+                 }
                     
             } else {
                 alert("登录失败!");
@@ -141,9 +147,9 @@
         });
     }
 
-    function setusertype(_utype){
+    /*function setusertype(_utype){
         utype = _utype;
-    }
+    }*/
   </script>
   <!--script-->
 </body>

@@ -44,18 +44,17 @@
       </div>
   <div id="navbar">
     <ul class="nav navbar-nav">
-        <li><a href="#"><span class="glyphicon glyphicon-file"></span> 可选任务</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-tasks"></span> 已完成任务</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-file"></span> 可审核任务</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-tasks"></span> 可标记任务</a></li>
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Username <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户中心 <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Faverat</a></li>
-                <li><a href="#">Setting</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="user_info.html">用户信息</a></li>
+                <li><a href="user_task.html">任务管理</a></li>
+                <li><a href="index.html">注销用户</a></li>
               </ul>
         </li>
     </ul>
@@ -64,7 +63,11 @@
     </nav>
 
 <div class="container">
-    
+    <div class="col-sm-offset ">
+      <button type="submit" class="btn" id="upload"><a href="auditor_videoupload.html">上传任务视频</a></button> 
+    </div><hr>
+
+
     <div class="panel panel-default">
     <div class="panel-heading"><h4><a href="#video1Content" data-toggle="collapse">Video Task 1</a></h4></div>
     <div class="panel-body collapse" id="video1Content">

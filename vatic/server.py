@@ -142,17 +142,17 @@ def respawnjob(id):
     session.commit()
 
 @handler()
-def getuserid(uname, pwd, utype):
+def getuserid(uname, pwd):
     user = session.query(Worker)
     user = user.filter(Worker.username == uname)
     user = user.filter(Worker.password == pwd)
-    user = user.filter(Worker.type == utype)
+    #user = user.filter(Worker.type == 2)
     if user.count() == 1:
         return user.one().id
     else:
         return -1
 
-@handler()
+@handler()#zqtest
 def insertUser(uname, pwd,email,type,address):
     db = MySQLdb.connect("localhost","root"," ","IRVADB" )
 
