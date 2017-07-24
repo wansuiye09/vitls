@@ -39,15 +39,6 @@ cd ..
 
 
 ——————————————————————————————————————————————————————————————————————————————————
-## Download
-
-You can download and extract VATIC from our website. Note: do NOT run the 
-installer as root. 
-
-    $ wget http://mit.edu/vondrick/vatic/vatic-install.sh
-    $ chmod +x vatic-install.sh
-    $ ./vatic-install.sh
-    $ cd vatic
 
 ## HTTP Server Configuration 
 
