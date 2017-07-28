@@ -434,6 +434,7 @@ function server_geturl(action, parameters)
 function server_request(action, parameters, callback)
 {
     var url = server_geturl(action, parameters);
+    console.log(url)
     console.log("Server request: " + url);
     $.ajax({
         url: url,
