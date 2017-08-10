@@ -2,12 +2,16 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"content="width = device-width, initial-scale = 1">
     <title>标注人员任务</title>
-    <link rel="stylesheet" href="css\bootstrap.min.css">
-    <script src="js\jquery-3.2.0.min.js"></script>
-    <script type="text/javascript" src="jquery-ui\jquery-ui.min.js"></script>
-    <script type="text/javascript" src="js\jquery.tmpl.min.js"></script>
-    <script src="js\bootstrap.min.js"></script>	
+    <link rel="stylesheet" href="bootstrap.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="jquery-ui.min.js"></script>
+    <script type="text/javascript" src="jquery.tmpl.min.js"></script>
+    <script src="js\bootstrap.min.js"></script> 
     <style type="text/css">
       li{  list-style:none }
       li.demo_1{
@@ -40,94 +44,328 @@
       </div>
   <div id="navbar">
     <ul class="nav navbar-nav">
-        <li><a href="annotator_task_all.html"><span class="glyphicon glyphicon-file"></span> 可选任务</a></li>
-        <li><a href="annotator_task_done.html"><span class="glyphicon glyphicon-tasks"></span> 已完成任务</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-file"></span> 可选任务</a></li>
+        
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Username <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户中心 <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Faverat</a></li>
-                <li><a href="#">Setting</a></li>
-                <li><a href="./login">Logout</a></li>
+                <li><a href="user_info.html">用户信息</a></li>
+                <li><a href="user_task.html">用户任务</a></li>
+                <li><a href="index.html">注销用户</a></li>
               </ul>
         </li>
     </ul>
    </div>
-       </div>
+   </div>
     </nav>
+
 <div class="container">
-    <div class="col-sm-12">      
-        <li class="demo_1 col-sm-3">
-          <div class="thumbnail text-center"  style="padding:40px">
-            <img alt="..." src="images/2.jpg" />         
-              <h3>视频名称</h3>
-              <p>视频描述</p>
-              <p>赏金</p>           
-          </div>
-        </li>   
-        <li class="demo_2 col-sm-3">
-          <div class="thumbnail">
-                <div class="checkbox">
-					<label><input type="checkbox" />选中</label>
-				  </div>
-            <img alt="..." src="images/2.jpg" />
-          </div>          
-        </li> 
-        <li class="demo_2 col-sm-3">
-          <div class="thumbnail">
-                <div class="checkbox">
-					<label><input type="checkbox" />选中</label>
-				  </div>
-            <img alt="..." src="images/2.jpg" />
-          </div>          
-        </li> 
-        <li class="demo_2 col-sm-3">
-          <div class="thumbnail">
-                <div class="checkbox">
-					<label><input type="checkbox" />选中</label>
-				  </div>
-            <img alt="..." src="images/2.jpg" />
-          </div>          
-        </li>                   
-    </div>             
-    <div class="col-sm-12">      
-        <li class="demo_1 col-sm-3">
-          <div class="thumbnail text-center"  style="padding:40px">
-            <img alt="..." src="images/2.jpg" />         
-              <h3>视频名称</h3>
-              <p>视频描述</p>
-              <p>赏金</p>           
-          </div>
-        </li>   
-        <li class="demo_2 col-sm-3">
-          <div class="thumbnail">
-                <div class="checkbox">
-					<label><input type="checkbox" />选中</label>
-				  </div>
-            <img alt="..." src="images/2.jpg" />
-          </div>          
-        </li> 
-        <li class="demo_2 col-sm-3">
-          <div class="thumbnail">
-                <div class="checkbox">
-					<label><input type="checkbox" />选中</label>
-				  </div>
-            <img alt="..." src="images/2.jpg" />
-          </div>          
-        </li> 
-        <li class="demo_2 col-sm-3">
-          <div class="thumbnail">
-                <div class="checkbox">
-					<label><input type="checkbox" />选中</label>
-				  </div>
-            <img alt="..." src="images/2.jpg" />
-          </div>          
-        </li>                   
+    
+    <div class="panel panel-default">
+    <div class="panel-heading"><h4><a href="#video1Content" data-toggle="collapse">Video Task 1</a></h4></div>
+    <div class="panel-body collapse" id="video1Content">
+        <p>Video Discription......</p>
+    <table class="table">
+          <tr>
+            <th>
+              视频主题
+            </th>
+            <th>
+              视频长度
+            </th>
+            <th>
+              有效期限
+            </th>
+            <th>
+              报酬
+            </th>
+          </tr>
+          <tr>
+            <td>
+              车辆监控视频
+            </td>
+            <td>
+              5mins
+            </td>
+            <td>
+              2017-7-31
+            </td>
+            <td>
+              ￥1/标注
+            </td>
+          </tr>
+    </table>
     </div>
-</div> 
- 
+      </div>
+
+    <div class="panel panel-default">
+    <div class="panel-heading"><h4><a href="#video2Content" data-toggle="collapse">Video Task 2</a></h4></div>
+    <div class="panel-body collapse" id="video2Content">
+        <p>Video Discription......</p>
+    <table class="table">
+          <tr>
+            <th>
+              视频主题
+            </th>
+            <th>
+              视频长度
+            </th>
+            <th>
+              有效期限
+            </th>
+            <th>
+              报酬
+            </th>
+          </tr>
+          <tr>
+            <td>
+              车辆监控视频
+            </td>
+            <td>
+              5mins
+            </td>
+            <td>
+              2017-7-31
+            </td>
+            <td>
+              ￥1/标注
+            </td>
+          </tr>
+    </table>
+    </div>
+    </div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading"><h4><a href="#video3Content" data-toggle="collapse">Video Task 3</a></h4></div>
+    <div class="panel-body collapse" id="video3Content">
+        <p>Video Discription......</p>
+    <table class="table">
+          <tr>
+            <th>
+              视频主题
+            </th>
+            <th>
+              视频长度
+            </th>
+            <th>
+              有效期限
+            </th>
+            <th>
+              报酬
+            </th>
+          </tr>
+          <tr>
+            <td>
+              车辆监控视频
+            </td>
+            <td>
+              5mins
+            </td>
+            <td>
+              2017-7-31
+            </td>
+            <td>
+              ￥1/标注
+            </td>
+          </tr>
+    </table>
+    </div>
+    </div>
+
+    <div class="panel panel-default">
+    <div class="panel-heading"><h4><a href="#video4Content" data-toggle="collapse">Video Task 4</a></h4></div>
+    <div class="panel-body collapse" id="video4Content">
+        <p>Video Discription......</p>
+    <table class="table">
+          <tr>
+            <th>
+              视频主题
+            </th>
+            <th>
+              视频长度
+            </th>
+            <th>
+              有效期限
+            </th>
+            <th>
+              报酬
+            </th>
+          </tr>
+          <tr>
+            <td>
+              车辆监控视频
+            </td>
+            <td>
+              5mins
+            </td>
+            <td>
+              2017-7-31
+            </td>
+            <td>
+              ￥1/标注
+            </td>
+          </tr>
+    </table>
+    </div>
+    </div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading"><h4><a href="#video5Content" data-toggle="collapse">Video Task 5</a></h4></div>
+    <div class="panel-body collapse" id="video5Content">
+        <p>Video Discription......</p>
+    <table class="table">
+          <tr>
+            <th>
+              视频主题
+            </th>
+            <th>
+              视频长度
+            </th>
+            <th>
+              有效期限
+            </th>
+            <th>
+              报酬
+            </th>
+          </tr>
+          <tr>
+            <td>
+              车辆监控视频
+            </td>
+            <td>
+              5mins
+            </td>
+            <td>
+              2017-7-31
+            </td>
+            <td>
+              ￥1/标注
+            </td>
+          </tr>
+    </table>
+    </div>
+    </div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading"><h4><a href="#video6Content" data-toggle="collapse">Video Task 6</a></h4></div>
+    <div class="panel-body collapse" id="video6Content">
+        <p>Video Discription......</p>
+    <table class="table">
+          <tr>
+            <th>
+              视频主题
+            </th>
+            <th>
+              视频长度
+            </th>
+            <th>
+              有效期限
+            </th>
+            <th>
+              报酬
+            </th>
+          </tr>
+          <tr>
+            <td>
+              车辆监控视频
+            </td>
+            <td>
+              5mins
+            </td>
+            <td>
+              2017-7-31
+            </td>
+            <td>
+              ￥1/标注
+            </td>
+          </tr>
+    </table>
+    </div>
+    </div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading"><h4><a href="#video7Content" data-toggle="collapse">Video Task 7</a></h4></div>
+    <div class="panel-body collapse" id="video7Content">
+        <p>Video Discription......</p>
+    <table class="table">
+          <tr>
+            <th>
+              视频主题
+            </th>
+            <th>
+              视频长度
+            </th>
+            <th>
+              有效期限
+            </th>
+            <th>
+              报酬
+            </th>
+          </tr>
+          <tr>
+            <td>
+              车辆监控视频
+            </td>
+            <td>
+              5mins
+            </td>
+            <td>
+              2017-7-31
+            </td>
+            <td>
+              ￥1/标注
+            </td>
+          </tr>
+    </table>
+    </div>
+    </div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading"><h4><a href="#video8Content" data-toggle="collapse">Video Task 8</a></h4></div>
+    <div class="panel-body collapse" id="video8Content">
+        <p>Video Discription......</p>
+    <table class="table">
+          <tr>
+            <th>
+              视频主题
+            </th>
+            <th>
+              视频长度
+            </th>
+            <th>
+              有效期限
+            </th>
+            <th>
+              报酬
+            </th>
+          </tr>
+          <tr>
+            <td>
+              车辆监控视频
+            </td>
+            <td>
+              5mins
+            </td>
+            <td>
+              2017-7-31
+            </td>
+            <td>
+              ￥1/标注
+            </td>
+          </tr>
+    </table>
+    </div>
+    </div>
+
+</div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
