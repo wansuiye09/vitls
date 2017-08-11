@@ -1,18 +1,105 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"> 
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     
     <title>XXX标记系统个人界面-管理员上传视频</title> 
     <link rel="stylesheet" href="css\bootstrap.min.css">
     
     <script src="js\jquery-3.2.0.min.js"></script>
     <script src="js\bootstrap.min.js"></script>
-    <style type='text/css'>
+  <script src="jquery-migrate-1.4.1.min.js"></script>
+  <script src="CITIS\javascript.js"></script>
+<script type="text/javascript">
+//上传文件后获取绝对路径（未成功）
+//FX获取文件路径方法
+/*function readFileFirefox(fileBrowser) {
+  try {
+    netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+  } 
+  catch (e) {
+    alert('无法访问本地文件，由于浏览器安全设置。为了克服这一点，请按照下列步骤操作：(1)在地址栏输入"about:config";(2) 右键点击并选择 New->Boolean; (3) 输入"signed.applets.codebase_principal_support" （不含引号）作为一个新的首选项的名称;(4) 点击OK并试着重新加载文件');
+    return;
+  }
+  var fileName=fileBrowser.value; //这一步就能得到客户端完整路径。下面的是否判断的太复杂，还有下面得到ie的也很复杂。
+  var file = Components.classes["@mozilla.org/file/local;1"]
+    .createInstance(Components.interfaces.nsILocalFile);
+  try {
+    // Back slashes for windows
+    file.initWithPath( fileName.replace(/\//g, "\\\\") );
+  }
+  catch(e) {
+    if (e.result!=Components.results.NS_ERROR_FILE_UNRECOGNIZED_PATH) throw e;
+    alert("File '" + fileName + "' cannot be loaded: relative paths are not allowed. Please provide an absolute path to this file.");
+    return;
+  }
+  if ( file.exists() == false ) {
+    alert("File '" + fileName + "' not found.");
+    return;
+  }
+ 
+ 
+ return file.path;
+}
+ 
+//不同浏览器获取文件路径
+function getvl(obj){
+//判断浏览器
+ var Sys = {}; 
+ var ua = navigator.userAgent.toLowerCase(); 
+ var s; 
+ (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] : 
+ (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] : 
+ (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] : 
+ (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] : 
+ (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+ var file_url="";
+ if(Sys.ie<="6.0"){
+  //ie5.5,ie6.0
+  file_url = obj.value;
+ }else if(Sys.ie>="7.0"){
+  //ie7,ie8
+  obj.select();
+  file_url = document.selection.createRange().text;
+ }else if(Sys.firefox){
+  //fx
+  //file_url = document.getElementById("file").files[0].getAsDataURL();//获取的路径为FF识别的加密字符串
+  file_url = readFileFirefox(obj);
+ }else if(Sys.chrome){
+  file_url = obj.value;
+ }
+ alert(file_url);
+ document.getElementById("file").innerHTML=file_url;
+}*/
+</script>
+<!--点击提交按钮后视频分流为帧--> 
+     <script type="text/javascript">
+      //检查是否写入文件的输入和输出路径
+      $(document).ready(function(){
+        function checkFields(){
+          return document.getElementById("textarea").value!==''&&document.getElementById("file").value!=='';
+        }
+        //先获取路径，再将字符/替换，使用sever_request调用后台函数
+        $("form").submit(function(){
+          if(checkFields()){
+            var videopath=document.getElementById("file").value;
+	          var outputpath=document.getElementById("textarea").value;
+            videopath=videopath.replace(/\//g,'<[<]');
+           // videopath=videopath.replace('.','%2E');
+            outputpath=outputpath.replace(/\//g,'<[<]');
+            server_request("submitextract", [videopath,outputpath],function(data){
+              alert("success");
+            });		
+         }else{
+		  	    alert("请写入视频输入和输出路径");
+			    }
+        }) 
+      });
+    </script>
+    <style type="text/css">
  div{
             
-            align-self: center;
-            -webkit-border-radius: 10px;
-            -moz-border-radius: 10px;
+      align-self: center;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
 }
 </style>
 </head>
@@ -27,7 +114,7 @@
 <div class="container">
 <div class="page-header">
     <h4>
-        <small>上传视频</small>
+   <small>上传视频</small>
    
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
@@ -42,13 +129,14 @@
 </div>
 </div>
 </nav>
+
    
 <!-- Navbar End --> 
 
 <div class="container">
 <div class="row">
 
-  <form class="form-horizontal">
+  <form class="form-horizontal" id="form1">
     <fieldset>
       <div id="legend" class="">
         
@@ -62,23 +150,23 @@
 
           <!-- File Upload -->
           <div class="controls col-sm-3">
-            <input class="input-file" id="fileInput" type="file">
+          <textarea cols="40" rows="1" name="textarea" id="file" placeholder="输入对视频的file path"></textarea>
           </div>
         </div>
     </div>
     <br>
-    
+   
 
 
     <div class="control-group">
     <label for="name" class="control-label   col-sm-offset-3 col-sm-2  ">视频类型</label>
   <div class="radio  ">
-      <label >
-        <input type="radio" name="optionsRadios"  value="option1" checked>仿真视频
+      <label>
+        <input type="radio" name="optionsRadios" value="option1" checked="">仿真视频
       </label>
    
       <label>
-        <input type="radio" name="optionsRadios"  value="option2">实拍视频
+        <input type="radio" name="optionsRadios" value="option2">实拍视频
     </label>  
 
     </div>
@@ -105,7 +193,7 @@
     <div class="control-group">          
           <!-- Button -->
           <div class="controls  col-sm-1">
-            <button class="btn  col-sm-12">提交</button>
+            <button class="btn  col-sm-12" id="submit">提交</button>
           </div>
     </div>
 
@@ -125,6 +213,7 @@
 </div>
 <hr>
 <!--copyright-->
-</body>
-</html>
 
+
+
+</body></html>

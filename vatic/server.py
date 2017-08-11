@@ -13,7 +13,14 @@ logger = logging.getLogger("vatic.server")
 
 #注册导入
 import MySQLdb
-
+#执行extract命令行
+@handler()
+def submitextract(videopath,outputpath):
+    videopath=videopath.replace('<[<]','/')
+    outputpath=outputpath.replace('<[<]','/')
+    print('CITIS extract '+videopath+' '+outputpath)
+    #先进入vatic所在目录
+    os.system('cd /home/zq/vitls/vatic && CITIS extract '+videopath+' '+outputpath)
 
 @handler()
 def getjob(id, verified):
