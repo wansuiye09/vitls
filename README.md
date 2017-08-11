@@ -5,6 +5,7 @@ https://github.com/cvondrick/vatic
 # BEFORE INSTALLATION 
 Use apache2 Mysql5.7.18 in Ubuntu16.04LTS
 prepared：
+
 sudo apt-get update
 
 sudo apt-get upgrade
