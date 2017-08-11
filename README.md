@@ -5,13 +5,22 @@ https://github.com/cvondrick/vatic
 # BEFORE INSTALLATION 
 Use apache2 Mysql5.7.18 in Ubuntu16.04LTS
 prepared：
+
 sudo apt-get update
 
 sudo apt-get upgrade
 
 sudo apt-get -y install mysql-server
 
-sudo apt-get install -y git python-setuptools python-dev libavcodec-dev libavformat-dev libswscale-dev libjpeg62 libjpeg62-dev libfreetype6 libfreetype6-dev apache2 libapache2-mod-wsgi mysql-server mysql-client libmysqlclient-dev gfortran
+sudo apt-get install -y git
+
+sudo apt-get install -y python-setuptools python-dev 
+
+sudo apt-get install -y libavcodec-dev libavformat-dev libswscale-dev libjpeg62 libjpeg62-dev libfreetype6 libfreetype6-dev   
+
+sudo apt-get install -y apache2 libapache2-mod-wsgi
+
+sudo apt-get install -y mysql-server mysql-client libmysqlclient-dev gfortran
 
 sudo apt-get install -y libav-tools
 
