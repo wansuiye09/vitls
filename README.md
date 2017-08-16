@@ -30,20 +30,30 @@ sudo easy_install -U numpy
 
 
 #Install CITIS
+in /home/username/vitls/vatic directory
+
 cd CITIS
+
 sudo python setup.py install
+
 cd ..
 
 #Install pyvision
+
 git clone https://github.com/cluePrints/pyvision.git
 
 #before install pyvision：
+
 sudo apt-get install -y g++ make
+
 sudo easy_install pip
+
 sudo pip install cython==0.20
 
 cd pyvision
+
 sudo python setup.py install
+
 cd ..
 
 
@@ -55,25 +65,35 @@ Open the Apache configuration file. On Ubuntu, this file is located at:
 
     /etc/apache2/sites-enabled/000-default
 
-If you do not use Apache on this computer for any other purpose, replace the
-contents of the file with:
+Change the content file as below, replace the username by your own
 
-    WSGIDaemonProcess www-data
-    WSGIProcessGroup www-data
+WSGIDaemonProcess www-data python-eggs=/home/username/.python-eggs
+WSGIProcessGroup www-data
 
-    <VirtualHost *:80>
-        ServerName 127.0.0.1
-        DocumentRoot /path/to/vatic/public
+<VirtualHost *:80>
+    ServerName 127.0.0.1
+    DocumentRoot /home/username/vitls/vatic/public
 
-        WSGIScriptAlias /server /path/to/vatic/server.py
-        CustomLog /var/log/apache2/access.log combined
-    </VirtualHost>
+    WSGIScriptAlias /server /home/username/vitls/vatic/server.py
+    CustomLog /var/log/apache2/access.log combined
+	<Directory /home/username/vitls/vatic/public>
+		Require all granted
+	</Directory>
+	<Directory /home/username/vitls/vatic>
+		<Files server.py>
+			Require all granted
+		</Files>
+	</Directory>
+</VirtualHost>
 
-updating ServerName with your domain name, DocumentRoot with the path to
-the public directory in VATIC, and WSGIScriptAlias to VATIC's server.py file.
 
-If you do use Apache for other purposes, you will have to setup a new virtual
-host with the correct document root and script alias, as shown above.
+
+make a copy of the config.py-example under /home/username/vitls/vatic directory and change the name to config.py
+
+modify the "database" category in this config.py file as shown below, replace the password by your own mysql password
+
+database = "mysql://root:password@localhost/IRVADB"
+
 
 Make sure you have the mod_headers module enabled:
 
@@ -82,6 +102,19 @@ Make sure you have the mod_headers module enabled:
 After making these changes, restart Apache:
 
     $ sudo apache2ctl graceful
+    
+then
+
+    $ cd /home/username/vitls/vatic
+    
+    $ CITIS setup --public-symlink
+    
+verify the setup
+
+    $ CITIS status --verify
+    
+It's OK to get the "Amazon Mechanical Turk... ERROR!" as you are not using the Amazon server
+
 
 ## SQL Server Configuration 
 
