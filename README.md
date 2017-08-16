@@ -67,24 +67,24 @@ Open the Apache configuration file. On Ubuntu, this file is located at:
 
 Change the content file as below, replace the username by your own
 
-WSGIDaemonProcess www-data python-eggs=/home/username/.python-eggs
-WSGIProcessGroup www-data
 
-<VirtualHost *:80>
-    ServerName 127.0.0.1
-    DocumentRoot /home/username/vitls/vatic/public
+		WSGIDaemonProcess www-data python-eggs=/home/username/.python-eggs
+		WSGIProcessGroup www-data
+  			<VirtualHost *:80>
+     				ServerName 127.0.0.1
+      				DocumentRoot /home/username/vitls/vatic/public
 
-    WSGIScriptAlias /server /home/username/vitls/vatic/server.py
-    CustomLog /var/log/apache2/access.log combined
-	<Directory /home/username/vitls/vatic/public>
-		Require all granted
-	</Directory>
-	<Directory /home/username/vitls/vatic>
-		<Files server.py>
-			Require all granted
-		</Files>
-	</Directory>
-</VirtualHost>
+      				WSGIScriptAlias /server /home/username/vitls/vatic/server.py
+      				CustomLog /var/log/apache2/access.log combined
+	  			<Directory /home/username/vitls/vatic/public>
+	 	 			Require all granted
+	  			</Directory>
+	  			<Directory /home/username/vitls/vatic>
+	 	 			<Files server.py>
+	 		 			Require all granted
+	 	 			</Files>
+	  			</Directory>
+  			 </VirtualHost>
 
 
 
