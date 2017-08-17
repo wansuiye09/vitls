@@ -14,13 +14,19 @@ logger = logging.getLogger("vatic.server")
 #注册导入
 import MySQLdb
 #执行extract命令行
+import stat
 @handler()
 def submitextract(videopath,outputpath):
     videopath=videopath.replace('<[<]','/')
     outputpath=outputpath.replace('<[<]','/')
     print('CITIS extract '+videopath+' '+outputpath)
     #先进入vatic所在目录
-    os.system('cd /home/zq/vitls/vatic && CITIS extract '+videopath+' '+outputpath)
+    os.system('cd /home/iscas-dsilab/vitls/vatic && CITIS extract '+videopath+' '+outputpath)
+
+@handler()
+def generateannotatorlist():
+    os.system('cd /home/iscas-dsilab/vitls/vatic && python annotator_generate_list.py')
+
 
 @handler()
 def getjob(id, verified):

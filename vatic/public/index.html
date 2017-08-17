@@ -131,9 +131,13 @@
             if (data != -1) {
                 alert("登录成功");
                 if(utype=="Annotator"){
-                    location.href = 'annotator_task.html';}
+                    server_request("generateannotatorlist"/*, */,function(data){
+                        alert("success");
+                    });
+                    location.href = 'annotator_generate_list.html';
+                    }
                  else if(utype=="Auditor"){
-                     location.href = 'annotator_generate_list.html';
+                     location.href = 'auditor_generate_list.html';
                  }
                  else if(utype=="Valuator"){
                      location.href = 'valuator_task.html';
